@@ -1,21 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // import { nanoid } from 'nanoid';
 import { ContactList } from './ContactsList';
 import { Form } from './Form';
 import { FilterInput } from './FilterInput';
+import { useDispatch } from 'react-redux';
+// import { getContacts } from 'redux/selectors';
+import { deleteContact } from 'redux/contactsSlice';
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
+  // const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
-  useEffect(() => {
-    const storedContacts = localStorage.getItem('contacts');
-    if (storedContacts) {
-      setContacts(JSON.parse(storedContacts));
-    }
-  }, []);
+  // const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   const storedContacts = localStorage.getItem('contacts');
+  //   if (storedContacts) {
+  //     setContacts(JSON.parse(storedContacts));
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   // const handleAddContact = (name, number) => {
   //   const existingContact = contacts.find(contact => contact.name === name);
@@ -33,9 +38,7 @@ export const App = () => {
   // };
 
   const handleDeleteContact = id => {
-    setContacts(prevContacts =>
-      prevContacts.filter(contact => contact.id !== id)
-    );
+    dispatch(deleteContact(id));
   };
 
   const handleFilterChange = event => {
@@ -43,9 +46,9 @@ export const App = () => {
   };
 
   const getFilteredContacts = () => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+    // return contacts.filter(contact =>
+    //   contact.name.toLowerCase().includes(filter.toLowerCase())
+    // );
   };
   const filteredContacts = getFilteredContacts();
 

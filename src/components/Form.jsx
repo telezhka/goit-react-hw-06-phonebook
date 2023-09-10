@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import css from '../css/Form.module.css';
 import { addContact } from 'redux/contactsSlice';
-import { store } from '../redux/store';
+// import { store } from '../redux/store';
 
 export const Form = () => {
   const [name, setName] = useState('');
