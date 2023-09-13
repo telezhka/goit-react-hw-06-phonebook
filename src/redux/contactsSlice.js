@@ -23,10 +23,6 @@ const contactsSlice = createSlice({
       const index = state.findIndex(contact => contact.id === action.payload);
       state.splice(index, 1);
     },
-    // filterContact(state, action) {
-    //   state.splice(0);
-    //   state = [...action.payload];
-    // },
   },
 });
 
