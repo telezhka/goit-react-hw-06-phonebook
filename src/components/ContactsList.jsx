@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 export const ContactList = ({ onDeleteContact }) => {
   const contacts = useSelector(getContacts);
-  console.log(contacts);
+  // console.log(contacts);
   return (
     <ul>
       {contacts.map(contact => (

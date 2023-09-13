@@ -23,8 +23,13 @@ const contactsSlice = createSlice({
       const index = state.findIndex(contact => contact.id === action.payload);
       state.splice(index, 1);
     },
+    filterContact(state, action) {
+      state.splice(0);
+      state = [...action.payload];
+    },
   },
 });
 
-export const { addContact, deleteContact } = contactsSlice.actions;
+export const { addContact, deleteContact, filterContact } =
+  contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
