@@ -68,7 +68,11 @@ export const App = () => {
         <h1>Phonebook</h1>
         <Form />
         <h2>Contacts</h2>
-        <FilterInput value={filter} onChange={handleFilterChange} />
+        <FilterInput
+          value={filter}
+          onChange={handleFilterChange}
+          onDeleteContact={handleDeleteContact}
+        />
         <ContactList
           contacts={filteredContacts}
           onDeleteContact={handleDeleteContact}
