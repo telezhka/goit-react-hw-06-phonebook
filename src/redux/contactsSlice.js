@@ -15,7 +15,6 @@ const contactsSlice = createSlice({
           payload: {
             contact,
             id: nanoid(),
-            // completed: false,
           },
         };
       },
@@ -24,14 +23,6 @@ const contactsSlice = createSlice({
       const index = state.findIndex(contact => contact.id === action.payload);
       state.splice(index, 1);
     },
-    // toggleCompleted(state, action) {
-    //   for (const task of state) {
-    //     if (task.id === action.payload) {
-    //       task.completed = !task.completed;
-    //       break;
-    //     }
-    //   }
-    // },
   },
 });
 
