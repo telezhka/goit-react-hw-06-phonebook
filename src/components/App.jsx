@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { ContactList } from './ContactsList';
 import { Form } from './Form';
 import { FilterInput } from './FilterInput';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+// import { useDispatch } from 'react-redux';
+// import { deleteContact } from 'redux/contactsSlice';
 export const App = () => {
   const [filter, setFilter] = useState('');
 
-  const dispatch = useDispatch();
-  const handleDeleteContact = id => {
-    dispatch(deleteContact(id));
-  };
+  // const dispatch = useDispatch();
+  // const handleDeleteContact = id => {
+  //   dispatch(deleteContact(id));
+  // };
 
   const handleFilterChange = event => {
     setFilter(event.target.value);
@@ -35,9 +35,9 @@ export const App = () => {
         <FilterInput
           value={filter}
           onChange={handleFilterChange}
-          onDeleteContact={handleDeleteContact}
+          // onDeleteContact={handleDeleteContact}
         />
-        <ContactList onDeleteContact={handleDeleteContact} />
+        <ContactList />
       </div>
     </div>
   );
