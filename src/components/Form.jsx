@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import css from '../css/Form.module.css';
 import { addContact } from 'redux/contactsSlice';
-// import { store } from '../redux/store';
+import { isContactNameUnique } from 'redux/selectors';
 
 export const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
+  const isUnique = useSelector(state => isContactNameUnique(state, name));
   const contact = {
     name,
     number,
@@ -26,9 +27,12 @@ export const Form = () => {
       alert('Please enter name and number');
       return;
     }
+    if (!isUnique) {
+      alert('This contact already exists');
+      return;
+    }
     console.log(contact);
     dispatch(addContact(contact));
-    // console.log(store);
     setName('');
     setNumber('');
   };
